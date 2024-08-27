@@ -12,36 +12,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import cl.bootcamp.individual3.ui.theme.Individual3Theme
+import cl.bootcamp.individual3.new
+import cl.bootcamp.individual3.old
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Individual3Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+fun main() {
+    while (true) {
+        try {
+            println("seleccione ejercicio: 1 o 2")
+            var ejercicio = readln().toInt()
+            when (ejercicio) {
+                1 -> new()
+                2 -> old()
             }
+        }catch (e: NumberFormatException){
+            println("seleccion no valida")
         }
+
+        println("quiere dejar de ver estos ejercicios?")
+        var respuesta = readln()
+        if (respuesta == "si") {
+            break
+        }
+
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Individual3Theme {
-        Greeting("Android")
-    }
-}

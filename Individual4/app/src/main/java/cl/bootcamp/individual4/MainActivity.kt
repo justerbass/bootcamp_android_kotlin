@@ -12,36 +12,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import cl.bootcamp.individual4.ui.theme.Individual4Theme
+import java.lang.NumberFormatException
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            Individual4Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+
+fun main() {
+    while (true) {
+        try {
+            println("seleccione ejercicio: 1 o 2")
+            println("1. ejercicio nuevo")
+            println("2. ejercicio viejo")
+            var ejercicio = readln().toInt()
+            when (ejercicio) {
+                1 -> new()
+                2 -> old()
             }
+        }catch (e: NumberFormatException){
+            println("seleccion no valida")
         }
-    }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+        println("quiere dejar de ver estos ejercicios? (si/no)")
+        var respuesta = readln().lowercase()
+        if (respuesta == "si") {
+            break
+        }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Individual4Theme {
-        Greeting("Android")
     }
 }

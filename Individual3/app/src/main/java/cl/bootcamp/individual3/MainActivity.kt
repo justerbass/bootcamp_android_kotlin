@@ -19,6 +19,8 @@ fun main() {
     while (true) {
         try {
             println("seleccione ejercicio: 1 o 2")
+            println("1. ejercicio nuevo")
+            println("2. ejercicio viejo")
             var ejercicio = readln().toInt()
             when (ejercicio) {
                 1 -> new()

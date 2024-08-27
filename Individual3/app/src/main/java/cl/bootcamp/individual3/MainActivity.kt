@@ -30,8 +30,8 @@ fun main() {
             println("seleccion no valida")
         }
 
-        println("quiere dejar de ver estos ejercicios?")
-        var respuesta = readln()
+        println("quiere dejar de ver estos ejercicios? (si/no)")
+        var respuesta = readln().lowercase()
         if (respuesta == "si") {
             break
         }

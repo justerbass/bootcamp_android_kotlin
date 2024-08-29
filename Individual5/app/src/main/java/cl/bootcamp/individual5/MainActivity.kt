@@ -17,7 +17,7 @@ import java.lang.NumberFormatException
 fun main() {
     while (true) {
         try {
-            println("seleccione ejercicio: 1 o 2")
+            println("seleccione ejercicio: ")
             println("1. ejercicio nuevo")
             println("2. ejercicio viejo")
             var ejercicio = readln().toInt()
@@ -29,7 +29,7 @@ fun main() {
             println("seleccion no valida")
         }
 
-        println("quiere dejar de ver estos ejercicios? (si/no)")
+        println("quiere salir de la consola? (si/no)")
         var respuesta = readln().lowercase()
         if (respuesta == "si") {
             break

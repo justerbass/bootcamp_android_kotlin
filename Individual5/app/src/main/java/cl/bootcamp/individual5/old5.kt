@@ -3,6 +3,7 @@ package cl.bootcamp.individual5
 fun old (){
     ingreso()
     println("saliendo de ejercicio")
+    println("")
 }
 
 fun ingreso(){
@@ -37,41 +38,46 @@ fun ingreso(){
             println("ingrese correo del usuario nª$i")
             email = readln()
 
-            println("ingrese sistema de salud")
-            println("1. Fonasa")
-            println("2. Isapre")
-            println("3. Particular")
-            val sistema = readln().toInt()
-            when (sistema){
-                1-> salud = "Fonasa"
-                2-> salud = "Isapre"
-                3-> salud = "Particular"
-            }
+            try {
+                println("ingrese sistema de salud")
+                println("1. Fonasa")
+                println("2. Isapre")
+                println("3. Particular")
+                val sistema = readln().toInt()
+                when (sistema) {
+                    1 -> salud = "Fonasa"
+                    2 -> salud = "Isapre"
+                    3 -> salud = "Particular"
+                }
 
-            if (nombre.length<21 && nombre.length>0){
-                if(apellido.all { it.isLetter() }){
-                    if(edad > 0){
-                        if("^[A-Za-z](.*)([@])(.+)(\\.)(.+)".toRegex().matches(email)){
-                            if(sistema>0 && sistema<4){
-                                break
+                if (nombre.length<21 && nombre.length>0){
+                    if(apellido.all { it.isLetter() }){
+                        if(edad > 0){
+                            if("^[A-Za-z](.*)([@])(.+)(\\.)(.+)".toRegex().matches(email)){
+                                if(sistema>0 && sistema<4){
+                                    break
+                                }else{
+                                    println("salud mal ingresado")
+                                    println("")
+                                }
                             }else{
-                                println("salud mal ingresado")
+                                println("correo mal ingresado")
                                 println("")
                             }
                         }else{
-                            println("correo mal ingresado")
+                            println("edad mal ingresada")
                             println("")
                         }
                     }else{
-                        println("edad mal ingresada")
+                        println("apellido mal ingresado")
                         println("")
                     }
                 }else{
-                    println("apellido mal ingresado")
+                    println("nombre mal ingresado")
                     println("")
                 }
-            }else{
-                println("nombre mal ingresado")
+            }catch (e: NumberFormatException){
+                println("salud mal ingresado")
                 println("")
             }
         }

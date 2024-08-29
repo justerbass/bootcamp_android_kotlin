@@ -26,8 +26,13 @@ fun ingreso(){
             println("ingrese apellido de usuario nª$i")
             apellido = readln()
 
-            println("ingrese edad de usuario nª$i")
-            edad = readln().toInt()
+            try {
+                println("ingrese edad de usuario nª$i")
+                edad = readln().toInt()
+            }catch (e: NumberFormatException){
+                println("edad mal ingresada")
+                println("")
+            }
 
             println("ingrese correo del usuario nª$i")
             email = readln()
@@ -51,27 +56,22 @@ fun ingreso(){
                                 break
                             }else{
                                 println("salud mal ingresado")
-                                println("favor de ingresarlo nuevamente")
                                 println("")
                             }
                         }else{
                             println("correo mal ingresado")
-                            println("favor de ingresarlo nuevamente")
                             println("")
                         }
                     }else{
                         println("edad mal ingresada")
-                        println("favor de ingresarlo nuevamente")
                         println("")
                     }
                 }else{
                     println("apellido mal ingresado")
-                    println("favor de ingresarlo nuevamente")
                     println("")
                 }
             }else{
                 println("nombre mal ingresado")
-                println("favor de ingresarlo nuevamente")
                 println("")
             }
         }
@@ -107,7 +107,10 @@ class userList (val users : MutableList<usuario> = mutableListOf()){
     }
 
     fun showUsers(){
-        for(user in users){
+
+        val sortedUsers = users.sortedBy { it.edad }
+
+        for(user in sortedUsers){
             user.mostrarUsuario()
         }
     }

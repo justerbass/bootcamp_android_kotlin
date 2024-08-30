@@ -24,6 +24,10 @@ fun new () {
                 println("")
             }
         }
+
+        fun showFilterProfile(){
+            println("$nombre - $edad años")
+        }
     }
 
     class userList(val users: MutableList<usuario> = mutableListOf()) {
@@ -44,6 +48,15 @@ fun new () {
             }
         }
 
+        fun showUsersFilter(){
+            var i = 0
+            for (user in users) {
+                i++
+                println(i)
+                user.showFilterProfile()
+            }
+        }
+
         fun filterAgeUser() {
             var i = 0
             val filterAgeList = userList()
@@ -56,7 +69,7 @@ fun new () {
             if (i == 0) {
                 println("no hay usuarios con edad mayor a $minimumAge")
             }else{
-                filterAgeList.showUsers()
+                filterAgeList.showUsersFilter()
             }
         }
     }

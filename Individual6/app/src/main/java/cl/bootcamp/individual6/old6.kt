@@ -48,8 +48,8 @@ fun sumar(){
 }
 
 fun suma (num1: Double, num2: Float){
-  val num2Double = num2.toDouble()
-  val resultado = num1 + num2Double
+    val num2Double = num2.toDouble()
+    val resultado = num1 + num2Double
     println("el resultado de la suma es: $resultado")
 }
 

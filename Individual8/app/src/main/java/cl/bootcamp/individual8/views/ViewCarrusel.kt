@@ -47,6 +47,7 @@ fun MainScreen(modifier: Modifier, viewModel: CarruselViewModel){
             DcHero()
             Space()
             MarvelHero()
+            Space()
         }
     }
 }

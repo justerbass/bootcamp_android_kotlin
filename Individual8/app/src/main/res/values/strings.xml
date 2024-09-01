@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Individual8</string>
 
+    <string name="marvel">Marvel</string>
+    <string name="dc">DC</string>
+
     <string name="marvel_hero_1">ironman</string>
     <string name="marvel_hero_2">spiderman</string>
     <string name="marvel_hero_3">thor</string>
@@ -22,5 +25,10 @@
     <string name="dc_hero_8">shazam</string>
     <string name="dc_hero_9">green arrow</string>
     <string name="dc_hero_10">martian manhunter</string>
+
+    <string name="header_text">Bienvenido a la galaxia de superhéroes</string>
+    <string name="hero_quest">¿que origen de superheroes quieres ver?</string>
+
+
 
 </resources>

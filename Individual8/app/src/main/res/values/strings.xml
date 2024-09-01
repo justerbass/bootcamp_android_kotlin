@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Individual8</string>
+
+    <string name="marvel_hero_1">ironman</string>
+    <string name="marvel_hero_2">spiderman</string>
+    <string name="marvel_hero_3">thor</string>
+    <string name="marvel_hero_4">hulk</string>
+    <string name="marvel_hero_5">black widow</string>
+    <string name="marvel_hero_6">Doctor Strange</string>
+    <string name="marvel_hero_7">captain america</string>
+    <string name="marvel_hero_8">Black Panter</string>
+    <string name="marvel_hero_9">Ant-Man</string>
+    <string name="marvel_hero_10">Scarlet Witch</string>
+
+    <string name="dc_hero_1">superman</string>
+    <string name="dc_hero_2">batman</string>
+    <string name="dc_hero_3">wonder woman</string>
+    <string name="dc_hero_4">flash</string>
+    <string name="dc_hero_5">green lantern</string>
+    <string name="dc_hero_6">aquaman</string>
+    <string name="dc_hero_7">hawkman</string>
+    <string name="dc_hero_8">shazam</string>
+    <string name="dc_hero_9">green arrow</string>
+    <string name="dc_hero_10">martian manhunter</string>
+
 </resources>

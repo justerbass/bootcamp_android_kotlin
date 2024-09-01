@@ -152,7 +152,6 @@ fun Easter(paddingValues: PaddingValues, viewModel: ShowImageViewModel){
         )
 }
 
-
 @Composable
 fun Space(){
     Spacer(modifier = Modifier.height(16.dp))

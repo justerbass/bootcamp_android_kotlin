@@ -1,0 +1,6 @@
+profe:
+
+le recomiendo que pruebe la app antes de revisar el código y me dice que le parece.
+
+
+https://github.com/justerbass/bootcamp_android_kotlin/tree/main/Individual7

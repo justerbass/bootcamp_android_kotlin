@@ -1,23 +1,36 @@
 package cl.bootcamp.individual7.view
 
 import android.media.Image
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -47,6 +60,8 @@ fun MainScreen(modifier: Modifier, viewModel: ShowImageViewModel) {
             Btn(it,viewModel)
             Space()
             Img(it,viewModel)
+            Space()
+            Easter(it,viewModel)
         }
 
 
@@ -83,12 +98,14 @@ fun Name(paddingValues: PaddingValues, viewModel: ShowImageViewModel){
 
 @Composable
 fun Btn(paddingValues: PaddingValues, viewModel: ShowImageViewModel){
-    Button(onClick = { /*TODO*/ },
+    val text_button by viewModel.text_button.observeAsState("")
+    Button(onClick = { viewModel.toggleImageVisibility() },
         colors = ButtonDefaults.buttonColors(
             contentColor = Color.hsl(0F, 0F, 0F),
             containerColor = Color.hsl(349F, 1F, 0.35F))
     ){
-        Text(text = "Mostrar Logo")
+        Text(text = text_button,
+            fontSize = 30.sp)
     }
 
 
@@ -97,10 +114,42 @@ fun Btn(paddingValues: PaddingValues, viewModel: ShowImageViewModel){
 
 @Composable
 fun Img(paddingValues: PaddingValues, viewModel: ShowImageViewModel){
-    Image(
-        painter = painterResource(id = R.drawable.compose),
-        contentDescription = stringResource(id = R.string.compose)
-    )
+    val imageVisibility by viewModel.imageVisibility.observeAsState(false)
+    val rainbow by viewModel.rainbow.collectAsState()
+    if ( imageVisibility == true) {
+        var rainbowColorsBrush = remember {
+            Brush.sweepGradient(
+                colors = rainbow
+            )
+        }
+        val borderWidth = 4.dp
+        Image(
+            painter = painterResource(id = R.drawable.compose),
+            contentDescription = stringResource(id = R.string.compose),
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .size(350.dp)
+                .border(
+                    BorderStroke(borderWidth, rainbowColorsBrush),
+                    CircleShape
+                )
+                .padding(borderWidth)
+                .clip(CircleShape)
+        )
+    }
+}
+
+@Composable
+fun Easter(paddingValues: PaddingValues, viewModel: ShowImageViewModel){
+    val easter by viewModel.easter_text.observeAsState("")
+    Text(text = easter,
+        color = Color.White,
+        fontSize = 20.sp,
+        fontWeight = FontWeight.Bold,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.padding(16.dp)
+
+        )
 }
 
 

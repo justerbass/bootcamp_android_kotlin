@@ -108,8 +108,6 @@ fun Btn(paddingValues: PaddingValues, viewModel: ShowImageViewModel){
             fontSize = 30.sp)
     }
 
-
-
 }
 
 @Composable

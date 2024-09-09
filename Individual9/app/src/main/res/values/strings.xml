@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Individual9</string>
+    <string name="title">Calculadora IMC</string>
+    <string name="content_btn">Calcular</string>
+    <string name="men">Hombre</string>
+    <string name="women">Mujer</string>
+
 </resources>

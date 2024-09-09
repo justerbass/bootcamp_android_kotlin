@@ -64,7 +64,6 @@ fun MainScreen(modifier: Modifier, viewModel: ShowImageViewModel) {
             Easter(it,viewModel)
         }
 
-
     }
 
 }

@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Spint5</string>
+    <string name="name_store">Shoes Tap</string>
+
+    <string name="title_shoe_1">Zapato mujer elegante</string>
+    <string name="title_shoe_2">Zapato cafe</string>
+    <string name="title_shoe_3">Zapato cafe elegante</string>
+    <string name="title_shoe_4">Zapato cafe deportivo</string>
+    <string name="title_shoe_5">Zapato mujer rojo</string>
+    <string name="title_shoe_6">Zapato negro colegio</string>
+    <string name="title_shoe_7">Zapato negro</string>
+
+    <string name="title_sneaker_1">Zapatilla azul</string>
+    <string name="title_sneaker_2">Zapatilla azul elegante</string>
+    <string name="title_sneaker_3">Zapatilla azul urbano</string>
+    <string name="title_sneaker_4">Zapatilla roja</string>
+    <string name="title_sneaker_5">Zapatilla verde</string>
+    <string name="title_sneaker_6">Zapatilla verde deportiva</string>
+    <string name="title_sneaker_7">Zapatilla multicolor</string>
+</resources>

@@ -66,7 +66,6 @@ fun MainScreen(){
             Space()
             ButtonCalc()
 
-
         }
     }
 }
@@ -115,6 +114,7 @@ fun Gender(){
 
     MultiChoiceSegmentedButtonRow {
         genderOptions.forEach { gender ->
+
             SegmentedButton(
                 checked = gender in genderSelected,
                 onCheckedChange =
@@ -142,7 +142,6 @@ fun Gender(){
                 Text(text = gender)
             }
         }
-
     }
 }
 

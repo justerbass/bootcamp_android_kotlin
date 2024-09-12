@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
@@ -43,7 +44,8 @@ fun MainScreen(){
                 text = stringResource(id = R.string.name_store),
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
-                color = Color.White)
+                color = Color.White,
+                fontWeight = FontWeight.Bold)
                     },
             colors = TopAppBarDefaults.topAppBarColors(Color.hsl(210f, 0.5f, 0.2f)),
 
@@ -63,11 +65,11 @@ fun MainScreen(){
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            TitleNameList(title = "Zapatos")
+            TitleNameList(title = stringResource(id = R.string.title_name_list_1))
             space()
             Shoe()
             space()
-            TitleNameList(title = "Zapatillas")
+            TitleNameList(title = stringResource(id = R.string.title_name_list_2))
             space()
             Sneaker()
         }

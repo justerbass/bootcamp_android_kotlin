@@ -6,7 +6,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import cl.bootcamp.individual9.view.MainScreen
+import cl.bootcamp.individual9.view.ResultView
 import cl.bootcamp.individual9.view.SplashScreen
+import cl.bootcamp.individual9.viewmodel.ViewModelIMC
 
 @Composable
 fun NavManager(){
@@ -18,8 +20,12 @@ fun NavManager(){
             SplashScreen(navControler)
         }
         composable("Main"){
-            MainScreen()
-    }
+            MainScreen(navControler, viewModelIMC = ViewModelIMC())
+        }
+
+        composable("Result"){
+            ResultView(navControler)
+        }
     }
 
 }

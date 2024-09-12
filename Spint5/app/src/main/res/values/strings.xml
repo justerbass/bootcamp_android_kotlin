@@ -2,6 +2,9 @@
     <string name="app_name">Spint5</string>
     <string name="name_store">Shoes Tap</string>
 
+    <string name="title_name_list_1">Zapatos</string>
+    <string name="title_name_list_2">Zapatillas</string>
+
     <string name="title_shoe_1">Zapato mujer elegante</string>
     <string name="title_shoe_2">Zapato cafe</string>
     <string name="title_shoe_3">Zapato cafe elegante</string>

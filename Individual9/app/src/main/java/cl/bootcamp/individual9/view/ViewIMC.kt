@@ -3,10 +3,8 @@ package cl.bootcamp.individual9.view
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -14,14 +12,11 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MultiChoiceSegmentedButtonRow
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonColors
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -30,12 +25,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import cl.bootcamp.individual9.R
 import cl.bootcamp.individual9.component.NumberField
+import cl.bootcamp.individual9.component.Space
+import cl.bootcamp.individual9.viewmodel.ViewModelIMC
 
 
 @Composable
-fun MainScreen(){
+fun MainScreen(navController: NavController, viewModelIMC: ViewModelIMC){
     Scaffold { paddingValues ->
         Column (
             modifier = Modifier
@@ -46,7 +44,7 @@ fun MainScreen(){
                         colors = listOf(
                             Color.hsl(210f, 0.1f, 0.7f),
                             Color.hsl(210f, 0.4f, 0.7f)
-                        ), // Azul claro y gris claro
+                        ),
                         start = Offset(0f, 0f),
                         end = Offset(1000f, 1000f)
                     )
@@ -58,22 +56,16 @@ fun MainScreen(){
             Space()
             Gender()
             Space()
-            NumberField(name = "Edad")
+            NumberField(name = "Edad", onValueChange = { viewModelIMC.age }, value = "")
             Space()
-            NumberField(name = "Peso (Kg)")
+            NumberField(name = "Peso (Kg)", onValueChange = {viewModelIMC.weight }, value = "")
             Space()
-            NumberField(name = "Altura (cm)")
+            NumberField(name = "Altura (cm)", onValueChange = {viewModelIMC.height }, value ="")
             Space()
-            ButtonCalc()
+            ButtonCalc(navController)
 
         }
     }
-}
-
-
-@Composable
-fun Space(){
-    Spacer(modifier = Modifier.height(16.dp))
 }
 
 @Composable
@@ -84,8 +76,8 @@ fun HeaderText(){
 }
 
 @Composable
-fun ButtonCalc(){
-    Button(onClick = { /*TODO*/ },
+fun ButtonCalc(navController: NavController){
+    Button(onClick = { navController.navigate("Result") },
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp),

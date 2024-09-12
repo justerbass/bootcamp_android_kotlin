@@ -1,5 +1,6 @@
 package cl.bootcamp.individual9.view
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -56,13 +57,13 @@ fun MainScreen(navController: NavController, viewModelIMC: ViewModelIMC){
             Space()
             Gender()
             Space()
-            NumberField(name = "Edad", onValueChange = { viewModelIMC.age }, value = "")
+            NumberField(name = "Edad", onValueChange = { viewModelIMC.age.value = it }, value = viewModelIMC.age.value)
             Space()
-            NumberField(name = "Peso (Kg)", onValueChange = {viewModelIMC.weight }, value = "")
+            NumberField(name = "Peso (Kg)", onValueChange = { viewModelIMC.weight.value = it }, value = viewModelIMC.weight.value)
             Space()
-            NumberField(name = "Altura (cm)", onValueChange = {viewModelIMC.height }, value ="")
+            NumberField(name = "Altura (cm)", onValueChange = { viewModelIMC.height.value = it }, value = viewModelIMC.height.value)
             Space()
-            ButtonCalc(navController)
+            ButtonCalc(navController, ViewModelIMC())
 
         }
     }
@@ -76,8 +77,15 @@ fun HeaderText(){
 }
 
 @Composable
-fun ButtonCalc(navController: NavController){
-    Button(onClick = { navController.navigate("Result") },
+fun ButtonCalc(navController: NavController, viewModelIMC: ViewModelIMC){
+    Button(onClick = {
+
+        val imc = viewModelIMC.calculateIMC()
+        Log.d("ButtonCalc", "IMC: $imc")
+
+        navController.navigate("Result")
+
+                     },
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp),

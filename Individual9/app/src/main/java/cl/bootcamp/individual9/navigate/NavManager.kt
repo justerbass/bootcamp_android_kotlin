@@ -24,7 +24,7 @@ fun NavManager(){
         }
 
         composable("Result"){
-            ResultView(navControler)
+            ResultView(navControler, viewModelIMC = ViewModelIMC())
         }
     }
 

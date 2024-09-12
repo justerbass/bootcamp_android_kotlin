@@ -1,6 +1,6 @@
 package cl.bootcamp.individual9.view
 
-import android.util.Log
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -79,13 +79,10 @@ fun HeaderText(){
 @Composable
 fun ButtonCalc(navController: NavController, viewModelIMC: ViewModelIMC){
     Button(onClick = {
-
         val imc = viewModelIMC.calculateIMC()
-        Log.d("ButtonCalc", "IMC: $imc")
-
         navController.navigate("Result")
-
                      },
+
         modifier = Modifier
             .fillMaxWidth()
             .padding(10.dp),

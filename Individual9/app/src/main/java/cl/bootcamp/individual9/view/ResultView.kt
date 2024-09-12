@@ -37,8 +37,7 @@ fun ShowResult(viewModelIMC: ViewModelIMC){
         if (!result.isNaN()) {
         "Tu IMC es: ${String.format("%.2f", result)}"
     } else {
-        "No se puede calcular el IMC" +
-            "$result"
+        "No se puede calcular el IMC"
     }
 
     Text(text = resultText)

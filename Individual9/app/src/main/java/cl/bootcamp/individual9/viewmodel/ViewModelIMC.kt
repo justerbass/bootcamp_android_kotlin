@@ -16,6 +16,8 @@ class ViewModelIMC :ViewModel(){
     private var _height = mutableStateOf("")
     var height: MutableState<String> = _height
 
+    private var _alertempty = mutableStateOf(false)
+    var alertempty: MutableState<Boolean> = _alertempty
 
     fun calculateIMC(): Double {
         val weight = weight.value.toDoubleOrNull() ?: 0.0

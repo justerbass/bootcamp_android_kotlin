@@ -5,4 +5,8 @@
     <string name="men">Hombre</string>
     <string name="women">Mujer</string>
 
+    <string name="alert_title">Faltan Datos</string>
+    <string name="alert_msg">Ingrese todos los datos para poder calcular su IMC</string>
+    <string name="alert_confirm">Aceptar</string>
+
 </resources>

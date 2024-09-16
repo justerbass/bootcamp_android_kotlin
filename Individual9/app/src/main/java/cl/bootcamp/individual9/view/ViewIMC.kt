@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import cl.bootcamp.individual9.R
+import cl.bootcamp.individual9.component.Alert
 import cl.bootcamp.individual9.component.NumberField
 import cl.bootcamp.individual9.component.Space
 import cl.bootcamp.individual9.viewmodel.ViewModelIMC
@@ -78,24 +79,23 @@ fun HeaderText(){
 
 @Composable
 fun ButtonCalc(navController: NavController, viewModelIMC: ViewModelIMC){
-    Button(onClick = {
-        val imc = viewModelIMC.calculateIMC()
-        navController.navigate("Result")
-                     },
 
+
+    Button(onClick = {
+                val imc = viewModelIMC.calculateIMC()
+                navController.navigate("Result")
+        },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp),
-        colors = ButtonDefaults.buttonColors(
-            contentColor =Color.hsl(210f, 0.1f, 0.9f),
+            .padding(10.dp), colors = ButtonDefaults.buttonColors(
+            contentColor = Color.hsl(210f, 0.1f, 0.9f),
             containerColor = Color.hsl(210f, 0.6f, 0.5f)
-        )
-
-        ) {
+        )) {
         Text(text = stringResource(id = R.string.content_btn),
             fontSize = 30.sp)
     }
 }
+
 
 
 

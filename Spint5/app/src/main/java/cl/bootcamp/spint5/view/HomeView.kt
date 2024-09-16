@@ -50,7 +50,6 @@ fun MainScreen(){
             colors = TopAppBarDefaults.topAppBarColors(Color.hsl(210f, 0.5f, 0.2f)),
 
         )
-
     }
     )
 
@@ -115,21 +114,21 @@ fun Shoe() {
 
 @Composable
 fun Sneaker(){
- val sneakers = listOf(
-     ProductItem(R.drawable.sneaker_1, stringResource(id = R.string.title_sneaker_1),
-         null, 1000),
-     ProductItem(R.drawable.sneaker_2, stringResource(id = R.string.title_sneaker_2),
-         null, 2000),
-     ProductItem(R.drawable.sneaker_3, stringResource(id = R.string.title_sneaker_3),
-         null, 3000),
-     ProductItem(R.drawable.sneaker_4, stringResource(id = R.string.title_sneaker_4),
-         null, 4000),
-     ProductItem(R.drawable.sneaker_5, stringResource(id = R.string.title_sneaker_5),
-         null,5000),
-     ProductItem(R.drawable.sneaker_6, stringResource(id = R.string.title_sneaker_6),
-         null, 6000),
-     ProductItem(R.drawable.sneaker_7, stringResource(id = R.string.title_sneaker_7),
-         null, 7000)
+    val sneakers = listOf(
+         ProductItem(R.drawable.sneaker_1, stringResource(id = R.string.title_sneaker_1),
+             null, 1000),
+         ProductItem(R.drawable.sneaker_2, stringResource(id = R.string.title_sneaker_2),
+             null, 2000),
+         ProductItem(R.drawable.sneaker_3, stringResource(id = R.string.title_sneaker_3),
+             null, 3000),
+         ProductItem(R.drawable.sneaker_4, stringResource(id = R.string.title_sneaker_4),
+             null, 4000),
+         ProductItem(R.drawable.sneaker_5, stringResource(id = R.string.title_sneaker_5),
+             null,5000),
+         ProductItem(R.drawable.sneaker_6, stringResource(id = R.string.title_sneaker_6),
+             null, 6000),
+         ProductItem(R.drawable.sneaker_7, stringResource(id = R.string.title_sneaker_7),
+             null, 7000)
      )
 
     LazyRow {

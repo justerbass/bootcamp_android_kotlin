@@ -10,6 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -21,10 +24,22 @@ import cl.bootcamp.individual9.viewmodel.ViewModelIMC
 
 @Composable
 fun ResultView(navController: NavController, viewModelIMC: ViewModelIMC){
-    Scaffold {paddingValues ->
+    Scaffold (
+        containerColor = Color.Transparent,
+        modifier = Modifier.background(
+        Brush.linearGradient(
+            colors = listOf(
+                Color.hsl(210f, 0.1f, 0.7f),
+                Color.hsl(210f, 0.4f, 0.7f)
+            ),
+            start = Offset(0f, 0f),
+            end = Offset(1000f, 1000f)
+        )
+    )){paddingValues ->
         Column(modifier = Modifier
             .padding(paddingValues)
             .fillMaxSize()
+            .background(Color.Transparent)
             ,
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center)
@@ -48,7 +63,6 @@ fun ShowResult(viewModelIMC: ViewModelIMC, navController: NavController){
         viewModelIMC.alertempty.value = true
         ShowAlert(viewModelIMC, navController)
     }
-
 }
 
 @Composable

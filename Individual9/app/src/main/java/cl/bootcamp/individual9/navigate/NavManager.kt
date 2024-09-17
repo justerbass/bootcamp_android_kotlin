@@ -6,6 +6,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import cl.bootcamp.individual9.view.InputPacient
 import cl.bootcamp.individual9.view.MainScreen
 import cl.bootcamp.individual9.view.ResultView
 import cl.bootcamp.individual9.view.SplashScreen
@@ -29,6 +30,10 @@ fun NavManager(){
 
         composable("Result"){
             ResultView(navControler, viewModelIMC)
+        }
+
+        composable("ListPacient"){
+            InputPacient(navControler, viewModelIMC)
         }
     }
 

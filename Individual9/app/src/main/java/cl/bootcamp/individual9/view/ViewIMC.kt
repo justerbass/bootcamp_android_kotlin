@@ -36,21 +36,25 @@ import cl.bootcamp.individual9.viewmodel.ViewModelIMC
 
 @Composable
 fun MainScreen(navController: NavController, viewModelIMC: ViewModelIMC){
-    Scaffold { paddingValues ->
+    Scaffold (
+        containerColor = Color.Transparent,
+        modifier = Modifier.background(
+            Brush.linearGradient(
+                colors = listOf(
+                    Color.hsl(210f, 0.1f, 0.7f),
+                    Color.hsl(210f, 0.4f, 0.7f)
+                ),
+                start = Offset(0f, 0f),
+                end = Offset(1000f, 1000f)
+            )
+        )
+    ){ paddingValues ->
         Column (
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .background(
-                    Brush.linearGradient(
-                        colors = listOf(
-                            Color.hsl(210f, 0.1f, 0.7f),
-                            Color.hsl(210f, 0.4f, 0.7f)
-                        ),
-                        start = Offset(0f, 0f),
-                        end = Offset(1000f, 1000f)
-                    )
-                ),
+                .background(Color.Transparent)
+                ,
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ){

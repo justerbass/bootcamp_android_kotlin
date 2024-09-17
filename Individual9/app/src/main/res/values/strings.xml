@@ -1,12 +1,23 @@
 <resources>
+<!--    strings view IMC-->
     <string name="app_name">Individual9</string>
     <string name="title">Calculadora IMC</string>
     <string name="content_btn">Calcular</string>
     <string name="men">Hombre</string>
     <string name="women">Mujer</string>
 
+
+<!--Strings alert-->
     <string name="alert_title">Faltan Datos</string>
     <string name="alert_msg">Ingrese todos los datos para poder calcular su IMC</string>
     <string name="alert_confirm">Aceptar</string>
+
+<!--    String lista paciente-->
+    <string name="title_list_pacient">Registro de Pacientes</string>
+    <string name="add_pacient">Registrar Paciente</string>
+    <string name="confirm_register">Registrar</string>
+    <string name="hint_register">Ingresar Nombre</string>
+    <string name="IMC">Calcular IMC</string>
+
 
 </resources>

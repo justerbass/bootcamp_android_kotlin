@@ -2,18 +2,19 @@ package cl.bootcamp.individual9.viewmodel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.graphics.Color
+import androidx.core.util.toRange
 import androidx.lifecycle.ViewModel
 import cl.bootcamp.individual9.model.RegisterPacient
+import kotlin.random.Random
 
 class ViewModelIMC :ViewModel(){
 
-    var state by mutableStateOf(RegisterPacient())
-        private set
 
-    var listPacient = mutableListOf<RegisterPacient>()
-
+//  Calcular IMC
     private var _age = mutableStateOf("")
     var age: MutableState<String> = _age
 
@@ -25,6 +26,7 @@ class ViewModelIMC :ViewModel(){
 
     private var _alertempty = mutableStateOf(false)
     var alertempty: MutableState<Boolean> = _alertempty
+
 
     fun calculateIMC(): Double {
         val weight = weight.value.toDoubleOrNull() ?: 0.0
@@ -39,6 +41,12 @@ class ViewModelIMC :ViewModel(){
         }
 
     }
+
+//    agregar pacientes
+    var state by mutableStateOf(RegisterPacient())
+        private set
+
+    var listPacient = mutableStateListOf<RegisterPacient>()
 
     fun openRegister(){
         state = state.copy(showModal = true)
@@ -55,7 +63,6 @@ class ViewModelIMC :ViewModel(){
     fun onValue(value: String, text: String){
         when(text){
             "namePacient" -> state = state.copy(namePacient = value)
-
         }
     }
 
@@ -67,6 +74,14 @@ class ViewModelIMC :ViewModel(){
         listPacient += newPacient
     }
 
+    fun generateRandomColor() :Color{
+        val hue =  (0..360).random().toFloat()
+        val saturation = Random.nextFloat()
+        val lightness = Random.nextFloat()
+        return Color.hsl(hue, saturation, lightness)
+    }
+
 }
+
 
 

@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material3.AlertDialogDefaults.containerColor
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -32,7 +33,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import cl.bootcamp.individual9.R
 import cl.bootcamp.individual9.component.RegistrationPacient
@@ -71,7 +74,7 @@ fun InputPacient(navController: NavController, viewModelIMC: ViewModelIMC){
             AddPacient(viewModelIMC)
             LazyColumn (modifier = Modifier.fillMaxSize()){
                items(viewModelIMC.listPacient){item ->
-                   CardPacient(item = item, navController)
+                   CardPacient(item = item, navController, viewModelIMC)
                }
            }
        }
@@ -109,7 +112,7 @@ fun ShowRegister(viewModelIMC: ViewModelIMC){
                     onValueChange = { viewModelIMC.onValue(it, "namePacient") },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
-                    placeholder = {stringResource(id = R.string.hint_register)}
+                    label = { Text(text = stringResource(id = R.string.hint_register))}
                 )
             },
             onDismissClick = { viewModelIMC.closeRegister() },
@@ -128,12 +131,24 @@ fun ShowRegister(viewModelIMC: ViewModelIMC){
 @Composable
 fun CardPacient(
     item : RegisterPacient,
-    navController: NavController
+    navController: NavController,
+    viewModelIMC: ViewModelIMC
 ){
-    Row (modifier = Modifier.fillMaxWidth(),
+    Row (modifier = Modifier
+        .fillMaxWidth()
+        .padding(20.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween){
-        Text(text = "Nombre: ${item.name}")
+        Row (modifier = Modifier.padding(10.dp)){
+            Icon(imageVector = Icons.Filled.Face,
+                contentDescription = null,
+                tint = viewModelIMC.generateRandomColor(),
+                modifier = Modifier.padding(10.dp))
+            Text(text = item.name.uppercase(),
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(10.dp))
+        }
         Row (modifier = Modifier.padding(10.dp)){
             OutlinedButton(
                 onClick = { navController.navigate("Main")}

@@ -2,7 +2,10 @@
 
 package cl.bootcamp.individual9.view
 
+import androidx.compose.animation.AnimatedContentTransitionScope.SlideDirection.Companion.Start
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Face
@@ -27,18 +31,23 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.BiasAbsoluteAlignment
+import androidx.compose.ui.BiasAlignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import cl.bootcamp.individual9.R
 import cl.bootcamp.individual9.component.RegistrationPacient
+import cl.bootcamp.individual9.component.Space
 import cl.bootcamp.individual9.model.RegisterPacient
 import cl.bootcamp.individual9.viewmodel.ViewModelIMC
 
@@ -67,13 +76,15 @@ fun InputPacient(navController: NavController, viewModelIMC: ViewModelIMC){
     ){paddingValues ->
        Column (modifier = Modifier
            .padding(paddingValues)
-           .fillMaxSize(),
+           .fillMaxSize()
+           .padding(15.dp),
            horizontalAlignment = Alignment.CenterHorizontally
        )
            {
             AddPacient(viewModelIMC)
             LazyColumn (modifier = Modifier.fillMaxSize()){
                items(viewModelIMC.listPacient){item ->
+                   Space()
                    CardPacient(item = item, navController, viewModelIMC)
                }
            }
@@ -134,27 +145,57 @@ fun CardPacient(
     navController: NavController,
     viewModelIMC: ViewModelIMC
 ){
-    Row (modifier = Modifier
-        .fillMaxWidth()
-        .padding(20.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween){
-        Row (modifier = Modifier.padding(10.dp)){
-            Icon(imageVector = Icons.Filled.Face,
-                contentDescription = null,
-                tint = viewModelIMC.generateRandomColor(),
-                modifier = Modifier.padding(10.dp))
-            Text(text = item.name.uppercase(),
+    Column (modifier = Modifier
+        .clickable { navController.navigate("Main")}
+        .border(2.dp, Color.hsl(210f, 0.6f, 0.5f), shape = RoundedCornerShape(10.dp))
+    ){
+        Row (modifier = Modifier
+            .fillMaxWidth()
+            .padding(10.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween){
+            Row (
+                modifier = Modifier.padding(10.dp, 0.dp)
+            ){
+                Icon(imageVector = Icons.Filled.Face,
+                    contentDescription = null,
+                    tint = viewModelIMC.generateRandomColor(),
+                    modifier = Modifier.padding(10.dp))
+                Text(text = item.name.uppercase(),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(10.dp))
+                Text(text = item.gender.uppercase(),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(10.dp))
+            }
+            Row (modifier = Modifier.padding(10.dp, 0.dp)){
+
+                Text(text = item.gender,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(10.dp))
+
+            }
+        }
+        Row (modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp, 0.dp, 0.dp, 20.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween){
+            Text(text = item.imc.toString(),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(10.dp))
-        }
-        Row (modifier = Modifier.padding(10.dp)){
-            OutlinedButton(
-                onClick = { navController.navigate("Main")}
-            ){
-                Text(text = stringResource(id = R.string.IMC))
-            }
+
+            Text(text = item.clasification,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(10.dp)
+            )
         }
     }
+
+
 }

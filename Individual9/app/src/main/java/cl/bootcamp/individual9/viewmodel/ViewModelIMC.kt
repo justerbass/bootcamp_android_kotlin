@@ -15,8 +15,11 @@ class ViewModelIMC :ViewModel(){
 
 
 //  Calcular IMC
-    private var _age = mutableStateOf("")
-    var age: MutableState<String> = _age
+    private var _genderIn = mutableStateOf("")
+    var genderIn: MutableState<String> = _genderIn
+
+    private var _ageIn = mutableStateOf("")
+    var ageIn: MutableState<String> = _ageIn
 
     private var _weight = mutableStateOf("")
     var weight: MutableState<String> = _weight
@@ -34,11 +37,16 @@ class ViewModelIMC :ViewModel(){
 
         val heightInMeters = height / 100.0
 
-        return if (weight > 0 && heightInMeters > 0) {
+
+        return if (weight > 0 && heightInMeters > 0
+            && ageIn.value.isNotEmpty() && ageIn.value.isNotBlank()
+            && genderIn.value.isNotEmpty() && genderIn.value.isNotBlank()
+            ) {
             weight / (heightInMeters * heightInMeters)
-        } else {
+        }else{
             Double.NaN
         }
+
 
     }
 
@@ -81,7 +89,19 @@ class ViewModelIMC :ViewModel(){
         return Color.hsl(hue, saturation, lightness)
     }
 
+
+    // Agregar resultados a la card de pacientes
+
+    fun addResult(){
+        state = state.copy(
+            age = ageIn.value.toInt(),
+            gender = genderIn.value
+            )
+    }
+
 }
+
+
 
 
 

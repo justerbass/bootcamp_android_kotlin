@@ -5,5 +5,9 @@ data class RegisterPacient(
     var name: String = "",
     var showModal: Boolean = false,
     var namePacient: String = "",
+    var gender: String = "",
+    var age: Int = 0,
+    var imc: Double = 0.0,
+    var clasification: String = ""
 
 )

@@ -58,11 +58,13 @@ fun MainScreen(navController: NavController, viewModelIMC: ViewModelIMC){
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ){
+            Name(viewModelIMC)
+            Space()
             HeaderText()
             Space()
-            Gender()
+            Gender(viewModelIMC)
             Space()
-            NumberField(name = "Edad", onValueChange = { viewModelIMC.age.value = it }, value = viewModelIMC.age.value)
+            NumberField(name = "Edad", onValueChange = { viewModelIMC.ageIn.value = it }, value = viewModelIMC.ageIn.value)
             Space()
             NumberField(name = "Peso (Kg)", onValueChange = { viewModelIMC.weight.value = it }, value = viewModelIMC.weight.value)
             Space()
@@ -106,7 +108,7 @@ fun ButtonCalc(navController: NavController, viewModelIMC: ViewModelIMC){
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Gender(){
+fun Gender(viewModelIMC: ViewModelIMC){
     val genderSelected = remember { mutableStateListOf<String>() }
     val genderOptions = listOf(
         stringResource(id = R.string.men),
@@ -116,19 +118,30 @@ fun Gender(){
     MultiChoiceSegmentedButtonRow {
         genderOptions.forEach { gender ->
 
-            SegmentedButton(
-                checked = gender in genderSelected,
+                SegmentedButton(
+                checked = gender in viewModelIMC.genderIn.value,
                 onCheckedChange =
-                if (genderSelected.isEmpty()){
-                    { genderSelected.add(gender) }
-                } else{
-                    { if (gender in genderSelected){
-                            genderSelected.remove(gender)
-                        }else{
-                    genderSelected.clear()
-                    genderSelected.add(gender)}}
 
-                },
+                if (genderSelected.isEmpty()){
+                    { genderSelected.add(gender)
+                    viewModelIMC.genderIn.value = gender}
+                } else {
+                    {
+                        if (gender in genderSelected) {
+                            genderSelected.remove(gender)
+                            viewModelIMC.genderIn.value = ""
+
+                        } else {
+                            genderSelected.clear()
+                            genderSelected.add(gender)
+                            viewModelIMC.genderIn.value = gender
+
+                        }
+                    }
+
+                }
+
+                    ,
 
                 shape = SegmentedButtonDefaults.itemShape(index = genderOptions.indexOf(gender), count = genderOptions.size),
                 colors = SegmentedButtonDefaults.colors(
@@ -138,11 +151,17 @@ fun Gender(){
                     inactiveContentColor = Color.hsl(0f, 0f, 0f)
 
                 )
-            )
+                )
             {
                 Text(text = gender)
             }
         }
     }
+}
+
+@Composable
+fun Name(viewModelIMC: ViewModelIMC){
+    Text(text = viewModelIMC.state.name,
+        fontSize = 30.sp)
 }
 

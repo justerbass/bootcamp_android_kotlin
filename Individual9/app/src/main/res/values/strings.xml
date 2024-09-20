@@ -19,5 +19,14 @@
     <string name="hint_register">Ingresar Nombre</string>
     <string name="IMC">Calcular IMC</string>
 
+<!--    Clasification MBI-->
+    <string name="clasification_1">Bajo Peso</string>
+    <string name="clasification_2">Peso Normal</string>
+    <string name="clasification_3">Sobrepeso</string>
+    <string name="clasification_4">Obesidad Clase I</string>
+    <string name="clasification_5">Obesidad Clase II</string>
+    <string name="clasification_6">Obesidad Clase III</string>
+
+    <string name="save_btn">Guardar</string>
 
 </resources>

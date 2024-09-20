@@ -22,7 +22,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.navOptions
 import cl.bootcamp.individual9.R
 import cl.bootcamp.individual9.component.Alert
 import cl.bootcamp.individual9.component.Space

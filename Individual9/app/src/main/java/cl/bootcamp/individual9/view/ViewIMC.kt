@@ -28,7 +28,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import cl.bootcamp.individual9.R
-import cl.bootcamp.individual9.component.Alert
 import cl.bootcamp.individual9.component.NumberField
 import cl.bootcamp.individual9.component.Space
 import cl.bootcamp.individual9.viewmodel.ViewModelIMC
@@ -70,7 +69,7 @@ fun MainScreen(navController: NavController, viewModelIMC: ViewModelIMC){
             Space()
             NumberField(name = "Altura (cm)", onValueChange = { viewModelIMC.height.value = it }, value = viewModelIMC.height.value)
             Space()
-            ButtonCalc(navController, ViewModelIMC())
+            ButtonCalc(navController)
 
         }
     }
@@ -84,11 +83,10 @@ fun HeaderText(){
 }
 
 @Composable
-fun ButtonCalc(navController: NavController, viewModelIMC: ViewModelIMC){
+fun ButtonCalc(navController: NavController){
 
 
     Button(onClick = {
-                val imc = viewModelIMC.calculateIMC()
                 navController.navigate("Result")
         },
         modifier = Modifier
@@ -101,9 +99,6 @@ fun ButtonCalc(navController: NavController, viewModelIMC: ViewModelIMC){
             fontSize = 30.sp)
     }
 }
-
-
-
 
 
 @OptIn(ExperimentalMaterial3Api::class)

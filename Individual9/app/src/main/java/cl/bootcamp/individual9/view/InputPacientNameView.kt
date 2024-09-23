@@ -5,7 +5,6 @@ package cl.bootcamp.individual9.view
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -75,11 +74,11 @@ fun InputPacient(navController: NavController, viewModelIMC: ViewModelIMC){
            horizontalAlignment = Alignment.CenterHorizontally
        )
            {
-            AddPacient(viewModelIMC)
+            AddPacient(viewModelIMC, navController)
             LazyColumn (modifier = Modifier.fillMaxSize()){
                items(viewModelIMC.listPacient){item ->
                    Space()
-                   CardPacient(item = item, navController, viewModelIMC)
+                   CardPacient(item = item, viewModelIMC)
                }
            }
        }
@@ -87,7 +86,7 @@ fun InputPacient(navController: NavController, viewModelIMC: ViewModelIMC){
 }
 
 @Composable
-fun AddPacient(viewModelIMC: ViewModelIMC){
+fun AddPacient(viewModelIMC: ViewModelIMC, navController: NavController){
     IconButton(onClick = { viewModelIMC.openRegister()
     },
         modifier = Modifier
@@ -100,18 +99,18 @@ fun AddPacient(viewModelIMC: ViewModelIMC){
             tint = Color.hsl(120f, 0.3f, 0.5f),)
     }
 
-    ShowRegister(viewModelIMC)
+    ShowRegister(viewModelIMC, navController)
 }
 
 @Composable
-fun ShowRegister(viewModelIMC: ViewModelIMC){
+fun ShowRegister(viewModelIMC: ViewModelIMC, navController: NavController){
     val state = viewModelIMC.state
 
     if(state.showModal){
         RegistrationPacient(
             title = stringResource(id = R.string.add_pacient),
             confirmText = stringResource(id = R.string.confirm_register),
-            onText = { 
+            onText = {
                 OutlinedTextField(
                     value = state.namePacient,
                     onValueChange = { viewModelIMC.onValue(it, "namePacient") },
@@ -123,9 +122,10 @@ fun ShowRegister(viewModelIMC: ViewModelIMC){
             onDismissClick = { viewModelIMC.closeRegister() },
             onConfirmClick = {
                 if (state.namePacient.isNotBlank()) {
-                    viewModelIMC.addNewPacient(state.namePacient)
+                    viewModelIMC.nameIn = state.namePacient
                     viewModelIMC.closeRegister()
                     viewModelIMC.cleanRegister()
+                    navController.navigate("Main")
                 }
             }
         )
@@ -136,11 +136,9 @@ fun ShowRegister(viewModelIMC: ViewModelIMC){
 @Composable
 fun CardPacient(
     item : RegisterPacient,
-    navController: NavController,
     viewModelIMC: ViewModelIMC
 ){
     Column (modifier = Modifier
-        .clickable { navController.navigate("Main")}
         .border(2.dp, Color.hsl(210f, 0.6f, 0.5f), shape = RoundedCornerShape(10.dp))
     ){
         Row (modifier = Modifier
@@ -159,6 +157,10 @@ fun CardPacient(
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.padding(10.dp))
+                Text(text = item.age.toString() + " años",
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(10.dp))
             }
             Row (modifier = Modifier.padding(10.dp, 0.dp)){
 
@@ -174,7 +176,7 @@ fun CardPacient(
             .padding(20.dp, 0.dp, 0.dp, 20.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween){
-            Text(text = item.imc.toString(),
+            Text(text = "IMC : ${String.format("%.2f", item.imc)}",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(10.dp))

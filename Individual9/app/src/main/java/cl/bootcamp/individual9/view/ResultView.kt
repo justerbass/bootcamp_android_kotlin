@@ -85,15 +85,15 @@ fun ShowResult(viewModelIMC: ViewModelIMC, navController: NavController){
     }
 
     if (!result.isNaN()){
-    val resultText ="Tu IMC es: \n${String.format("%.2f", result)} \n$type "
-    Text(text = resultText,
-        fontSize = 30.sp,
-        textAlign = TextAlign.Center,
-        lineHeight = 40.sp,
-        fontWeight = FontWeight.Bold
-    )
-        viewModelIMC.state.clasification = type
-        viewModelIMC.state.imc = result
+        val resultText ="Tu IMC es: \n${String.format("%.2f", result)} \n$type "
+        Text(text = resultText,
+            fontSize = 30.sp,
+            textAlign = TextAlign.Center,
+            lineHeight = 40.sp,
+            fontWeight = FontWeight.Bold
+        )
+            viewModelIMC.state.clasification = type
+            viewModelIMC.state.imc = result
     }
     else{
         viewModelIMC.alertempty.value = true
@@ -126,6 +126,8 @@ fun ButtonSave(navController: NavController, viewModelIMC: ViewModelIMC){
     val result = viewModelIMC.calculateIMC()
     if (!result.isNaN()){
         Button(onClick = {
+            viewModelIMC.state.name = ViewModelIMC.nameIn
+            viewModelIMC.addNewPacient("")
             navController.navigate("ListPacient")
             viewModelIMC.addResult()
         },

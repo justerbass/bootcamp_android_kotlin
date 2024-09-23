@@ -1,5 +1,6 @@
 package cl.bootcamp.individual9.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
@@ -13,7 +14,8 @@ import kotlin.random.Random
 class ViewModelIMC :ViewModel(){
 
 
-//  Calcular IMC
+
+    //  Calcular IMC
     private var _genderIn = mutableStateOf("")
     var genderIn: MutableState<String> = _genderIn
 
@@ -45,8 +47,6 @@ class ViewModelIMC :ViewModel(){
         }else{
             Double.NaN
         }
-
-
     }
 
 //    agregar pacientes
@@ -65,18 +65,27 @@ class ViewModelIMC :ViewModel(){
 
     fun cleanRegister(){
         state = state.copy(namePacient = "")
+        ageIn.value = ""
+        genderIn.value = ""
+        weight.value = ""
+        height.value = ""
     }
 
     fun onValue(value: String, text: String){
         when(text){
             "namePacient" -> state = state.copy(namePacient = value)
+            "age" -> ageIn.value = value
+            "gender" -> genderIn.value = value
+            "weight" -> weight.value = value
+            "height" -> height.value = value
         }
     }
 
     fun addNewPacient(name: String){
         val newPacient = state.copy(
             id = listPacient.size +1,
-            name = name
+            name = name,
+
         )
         listPacient += newPacient
     }
@@ -94,11 +103,17 @@ class ViewModelIMC :ViewModel(){
     fun addResult(){
         state = state.copy(
             age = ageIn.value.toInt(),
-            gender = genderIn.value
+            gender = genderIn.value,
+            name = state.namePacient
             )
     }
 
+    companion object{
+        var nameIn: String = ""
+    }
+
 }
+
 
 
 

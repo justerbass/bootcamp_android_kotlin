@@ -35,6 +35,7 @@ import cl.bootcamp.individual9.viewmodel.ViewModelIMC
 
 @Composable
 fun MainScreen(navController: NavController, viewModelIMC: ViewModelIMC){
+    val state = viewModelIMC.state
     Scaffold (
         containerColor = Color.Transparent,
         modifier = Modifier.background(
@@ -134,9 +135,7 @@ fun Gender(viewModelIMC: ViewModelIMC){
                         }
                     }
 
-                }
-
-                    ,
+                },
 
                 shape = SegmentedButtonDefaults.itemShape(index = genderOptions.indexOf(gender), count = genderOptions.size),
                 colors = SegmentedButtonDefaults.colors(
@@ -156,7 +155,9 @@ fun Gender(viewModelIMC: ViewModelIMC){
 
 @Composable
 fun Name(viewModelIMC: ViewModelIMC){
-    Text(text = viewModelIMC.state.name,
+
+    Text(text = viewModelIMC.state.namePacient,
         fontSize = 30.sp)
 }
+
 

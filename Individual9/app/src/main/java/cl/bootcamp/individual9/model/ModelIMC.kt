@@ -11,3 +11,4 @@ data class RegisterPacient(
     var clasification: String = ""
 
 )
+

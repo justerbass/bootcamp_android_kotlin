@@ -58,8 +58,6 @@ fun MainScreen(navController: NavController, viewModelIMC: ViewModelIMC){
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ){
-            Name(viewModelIMC)
-            Space()
             HeaderText()
             Space()
             Gender(viewModelIMC)
@@ -153,11 +151,5 @@ fun Gender(viewModelIMC: ViewModelIMC){
     }
 }
 
-@Composable
-fun Name(viewModelIMC: ViewModelIMC){
-
-    Text(text = viewModelIMC.state.namePacient,
-        fontSize = 30.sp)
-}
 
 

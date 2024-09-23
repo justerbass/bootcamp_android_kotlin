@@ -8,7 +8,9 @@ data class RegisterPacient(
     var gender: String = "",
     var age: Int = 0,
     var imc: Double = 0.0,
-    var clasification: String = ""
+    var clasification: String = "",
+    val weight: Double = 0.0,
+    val height: Double = 0.0
 
 )
 

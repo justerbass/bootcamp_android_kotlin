@@ -122,7 +122,7 @@ fun ShowRegister(viewModelIMC: ViewModelIMC, navController: NavController){
             onDismissClick = { viewModelIMC.closeRegister() },
             onConfirmClick = {
                 if (state.namePacient.isNotBlank()) {
-                    viewModelIMC.nameIn = state.namePacient
+                    ViewModelIMC.nameIn = state.namePacient
                     viewModelIMC.closeRegister()
                     viewModelIMC.cleanRegister()
                     navController.navigate("Main")

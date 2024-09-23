@@ -15,6 +15,7 @@ class ViewModelIMC :ViewModel(){
 
 
 
+
     //  Calcular IMC
     private var _genderIn = mutableStateOf("")
     var genderIn: MutableState<String> = _genderIn
@@ -82,10 +83,19 @@ class ViewModelIMC :ViewModel(){
     }
 
     fun addNewPacient(name: String){
+        val age = ageIn.value.toIntOrNull() ?: return
+        val weightVal = weight.value.toDoubleOrNull() ?: return
+        val heightVal = height.value.toDoubleOrNull() ?: return
+        val imcResult = calculateIMC()
+
         val newPacient = state.copy(
             id = listPacient.size +1,
-            name = name,
-
+            namePacient = state.namePacient,
+            gender = genderIn.value,
+            weight = weightVal,
+            height = heightVal,
+            imc = imcResult,
+            age = age
         )
         listPacient += newPacient
     }
@@ -104,7 +114,7 @@ class ViewModelIMC :ViewModel(){
         state = state.copy(
             age = ageIn.value.toInt(),
             gender = genderIn.value,
-            name = state.namePacient
+            namePacient = state.namePacient
             )
     }
 

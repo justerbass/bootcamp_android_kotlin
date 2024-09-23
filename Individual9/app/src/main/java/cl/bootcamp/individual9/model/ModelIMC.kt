@@ -1,5 +1,7 @@
 package cl.bootcamp.individual9.model
 
+import java.time.LocalDateTime
+
 data class RegisterPacient(
     var id: Int = 0,
     var name: String = "",
@@ -10,7 +12,8 @@ data class RegisterPacient(
     var imc: Double = 0.0,
     var clasification: String = "",
     val weight: Double = 0.0,
-    val height: Double = 0.0
+    val height: Double = 0.0,
+    val time: LocalDateTime = LocalDateTime.now()
 
 )
 

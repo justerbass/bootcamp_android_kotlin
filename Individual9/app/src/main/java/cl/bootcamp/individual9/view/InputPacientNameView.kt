@@ -3,8 +3,11 @@
 package cl.bootcamp.individual9.view
 
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,6 +37,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -42,8 +46,10 @@ import cl.bootcamp.individual9.component.RegistrationPacient
 import cl.bootcamp.individual9.component.Space
 import cl.bootcamp.individual9.model.RegisterPacient
 import cl.bootcamp.individual9.viewmodel.ViewModelIMC
+import java.time.format.DateTimeFormatter
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun InputPacient(navController: NavController, viewModelIMC: ViewModelIMC){
@@ -78,7 +84,7 @@ fun InputPacient(navController: NavController, viewModelIMC: ViewModelIMC){
             LazyColumn (modifier = Modifier.fillMaxSize()){
                items(viewModelIMC.listPacient){item ->
                    Space()
-                   CardPacient(item = item, viewModelIMC)
+                   CardPacient(item = item, viewModelIMC, navController)
                }
            }
        }
@@ -133,17 +139,20 @@ fun ShowRegister(viewModelIMC: ViewModelIMC, navController: NavController){
 }
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun CardPacient(
     item : RegisterPacient,
-    viewModelIMC: ViewModelIMC
+    viewModelIMC: ViewModelIMC,
+    navController: NavController
 ){
     Column (modifier = Modifier
+        .clickable { navController.navigate("Main") }
         .border(2.dp, Color.hsl(210f, 0.6f, 0.5f), shape = RoundedCornerShape(10.dp))
     ){
         Row (modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp),
+            .padding(10.dp,20.dp, 10.dp, 0.dp ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween){
             Row (
@@ -173,7 +182,7 @@ fun CardPacient(
         }
         Row (modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp, 0.dp, 0.dp, 20.dp),
+            .padding(20.dp, 0.dp, 20.dp,0.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween){
             Text(text = "IMC : ${String.format("%.2f", item.imc)}",
@@ -183,6 +192,28 @@ fun CardPacient(
 
             Text(text = item.clasification,
                 fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(10.dp)
+            )
+        }
+        Row (modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp, 0.dp, 20.dp, 20.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween){
+            val dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+            val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
+            Text(
+                text = item.time.format(dateFormatter),
+                fontSize = 20.sp,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(10.dp)
+            )
+            Text(
+                text = item.time.format(timeFormatter),
+                fontSize = 20.sp,
+                textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(10.dp)
             )

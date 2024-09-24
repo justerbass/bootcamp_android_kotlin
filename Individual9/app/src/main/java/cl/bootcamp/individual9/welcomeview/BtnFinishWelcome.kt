@@ -27,6 +27,7 @@ fun BtnFinish(currentPage: Int, navController: NavController, store: Storewelcom
                 CoroutineScope(Dispatchers.IO).launch {
                     store.saveWelcome(true)
                 }
+                navController.navigate("ListPacient")
             }) {
                 Text(text = "Vamos!!!")
             }

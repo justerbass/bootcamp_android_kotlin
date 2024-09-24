@@ -34,7 +34,7 @@ fun NavManager(){
     NavHost(navController = navControler, startDestination = "Splash") {
 
         composable("Splash"){
-            SplashScreen(navControler)
+            SplashScreen(navControler, store = storeWelcome.value)
         }
 
         composable("Main"){

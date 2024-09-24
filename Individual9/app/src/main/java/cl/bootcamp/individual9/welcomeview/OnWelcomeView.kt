@@ -1,9 +1,10 @@
 package cl.bootcamp.individual9.welcomeview
 
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
+
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import cl.bootcamp.individual9.R
 import cl.bootcamp.individual9.datastore.Storewelcome
@@ -20,21 +21,21 @@ fun MainWellcome(modifier: Modifier, navController: NavController, store: Storew
         WelcomeData(
             R.raw.anim_1,
             "Bienvenido",
-            "Esta es una calculadora de IMC"
+            stringResource(id = R.string.wellcome_1)
         )
     )
     items.add(
         WelcomeData(
             R.raw.anim_2,
-            "Bienvenido",
-            "Esta es una calculadora de IMC"
+            "Perfiles",
+            stringResource(id = R.string.wellcome_2)
         )
     )
     items.add(
         WelcomeData(
             R.raw.anim_3,
-            "Bienvenido",
-            "Esta es una calculadora de IMC"
+            "Ventajas",
+            stringResource(id = R.string.wellcome_3)
         )
     )
 
@@ -48,7 +49,7 @@ fun MainWellcome(modifier: Modifier, navController: NavController, store: Storew
     WelcomePager(
         item = items,
         pagerState = pagerState,
-        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
+        modifier = Modifier.fillMaxSize(),
         navController = navController,
         store = store
     )

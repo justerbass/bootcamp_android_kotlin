@@ -29,4 +29,9 @@
 
     <string name="save_btn">Guardar</string>
 
+<!--    Bienvenida-->
+    <string name="wellcome_1">Con esta app puedes monitorear tu salud.</string>
+    <string name="wellcome_2">Puedes agregar multiples perfiles</string>
+    <string name="wellcome_3">Puedes ver tu historial</string>
+
 </resources>

@@ -98,7 +98,6 @@ fun AddPacient(viewModelIMC: ViewModelIMC, navController: NavController){
         modifier = Modifier
             .scale(2.5f)
             .padding(20.dp),
-
     ) {
         Icon(imageVector = Icons.Filled.AccountCircle,
             contentDescription = "add",
@@ -152,7 +151,7 @@ fun CardPacient(
     ){
         Row (modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp,20.dp, 10.dp, 0.dp ),
+            .padding(10.dp, 20.dp, 10.dp, 0.dp ),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween){
             Row (
@@ -182,7 +181,7 @@ fun CardPacient(
         }
         Row (modifier = Modifier
             .fillMaxWidth()
-            .padding(20.dp, 0.dp, 20.dp,0.dp),
+            .padding(20.dp, 0.dp, 20.dp, 0.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween){
             Text(text = "IMC : ${String.format("%.2f", item.imc)}",

@@ -99,7 +99,6 @@ fun ShowResult(viewModelIMC: ViewModelIMC, navController: NavController){
         viewModelIMC.alertempty.value = true
         ShowAlert(viewModelIMC, navController)
     }
-
 }
 
 @Composable

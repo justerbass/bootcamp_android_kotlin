@@ -124,8 +124,3 @@ class ViewModelIMC :ViewModel(){
 
 }
 
-
-
-
-
-

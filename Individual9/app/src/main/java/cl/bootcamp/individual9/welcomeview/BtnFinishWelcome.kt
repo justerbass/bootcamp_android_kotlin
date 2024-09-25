@@ -8,7 +8,10 @@ import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import cl.bootcamp.individual9.datastore.Storewelcome
 import kotlinx.coroutines.CoroutineScope
@@ -19,7 +22,7 @@ import kotlinx.coroutines.launch
 fun BtnFinish(currentPage: Int, navController: NavController, store: Storewelcome){
     Row (modifier = Modifier
         .fillMaxWidth()
-        .padding(bottom = 20.dp),
+        .padding(bottom = 50.dp),
         horizontalArrangement = if(currentPage != 2) Arrangement.SpaceBetween else Arrangement.Center
     ){
         if (currentPage == 2){
@@ -29,7 +32,11 @@ fun BtnFinish(currentPage: Int, navController: NavController, store: Storewelcom
                 }
                 navController.navigate("ListPacient")
             }) {
-                Text(text = "Vamos!!!")
+                Text(text = "Vamos!!!",
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center,
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold)
             }
         }
     }

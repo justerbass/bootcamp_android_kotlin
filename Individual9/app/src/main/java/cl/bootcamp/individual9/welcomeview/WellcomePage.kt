@@ -3,8 +3,10 @@ package cl.bootcamp.individual9.welcomeview
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
@@ -18,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import cl.bootcamp.individual9.component.Space
 import cl.bootcamp.individual9.datastore.Storewelcome
 import cl.bootcamp.individual9.model.WelcomeData
 import com.google.accompanist.pager.ExperimentalPagerApi
@@ -44,7 +47,8 @@ fun WelcomePager(
         end = Offset(1000f, 1000f)
     ))
         ){
-        Column (horizontalAlignment = Alignment.CenterHorizontally) {
+        Column (horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.fillMaxSize()) {
             HorizontalPager(state = pagerState) {page ->
                 Column (modifier = Modifier
                     .padding(60.dp)
@@ -53,8 +57,8 @@ fun WelcomePager(
                 ) {
                     LoaderData(
                         modifier = Modifier
-                            .size(200.dp)
-                            .fillMaxSize()
+                            .size(300.dp)
+                            .fillMaxWidth()
                             .align(alignment = Alignment.CenterHorizontally)
                         ,
                         image = item[page].image
@@ -65,18 +69,24 @@ fun WelcomePager(
                         fontSize = 35.sp
                     )
                     Text(text = item[page].description,
-                        modifier = Modifier.padding(top = 5.dp),
+                        modifier = Modifier.padding(top = 25.dp),
                         textAlign = TextAlign.Center,
                         fontSize = 25.sp
                     )
                 }
             }
+            
+            Spacer(modifier = Modifier.height(125.dp))
+            
             PageIndicator(
                 size = item.size,
                 currentPage = pagerState.currentPage,
             )
+
         }
-        Box(modifier = Modifier.align(Alignment.BottomCenter).fillMaxWidth()){
+        Box(modifier = Modifier
+            .align(Alignment.BottomCenter)
+            ){
             BtnFinish(
                 currentPage = pagerState.currentPage,
                 navController = navController,

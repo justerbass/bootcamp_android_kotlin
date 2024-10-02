@@ -59,8 +59,8 @@ fun MainScreen(modifier: Modifier, viewModel: CarruselViewModel){
             Welcome(viewModel)
             Space()
             Quest(viewModel)
+            HeroTitle(viewModel)
             VersusButton(viewModel)
-            HeroTitle(viewModel
             Space()
             ShowHero(viewModel)
             Space()

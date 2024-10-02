@@ -27,16 +27,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 
 import cl.bootcamp.spint5.R
 import cl.bootcamp.spint5.component.ShoeCard
 import cl.bootcamp.spint5.component.TitleNameList
+import cl.bootcamp.spint5.component.space
 import cl.bootcamp.spint5.model.ProductItem
+import cl.bootcamp.spint5.viewmodel.ShoesTapViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen(){
+fun MainScreen(viewModel: ShoesTapViewModel, navController: NavController){
 
     Scaffold (topBar = {
         CenterAlignedTopAppBar(
@@ -66,80 +69,54 @@ fun MainScreen(){
         ) {
             TitleNameList(title = stringResource(id = R.string.title_name_list_1))
             space()
-            Shoe()
+            Shoe(viewModel, navController)
             space()
             TitleNameList(title = stringResource(id = R.string.title_name_list_2))
             space()
-            Sneaker()
+            Sneaker(viewModel, navController)
         }
     }
 }
 
-@Composable
-fun space(){
-    Spacer(modifier = Modifier.height(16.dp))
-}
+
 
 @Composable
-fun Shoe() {
-    val shoes = listOf(
-        ProductItem(R.drawable.shoe_1, stringResource(id = R.string.title_shoe_1),
-            null, 1000),
-        ProductItem(R.drawable.shoe_2, stringResource(id = R.string.title_shoe_2),
-            null, 2000),
-        ProductItem(R.drawable.shoe_3, stringResource(id = R.string.title_shoe_3),
-            null, 3000),
-        ProductItem(R.drawable.shoe_4, stringResource(id = R.string.title_shoe_4),
-            null, 4000),
-        ProductItem(R.drawable.shoe_5, stringResource(id = R.string.title_shoe_5),
-            null, 5000),
-        ProductItem(R.drawable.shoe_6, stringResource(id = R.string.title_shoe_6),
-            null, 6000),
-        ProductItem(R.drawable.shoe_7, stringResource(id = R.string.title_shoe_7),
-            null, 7000)
-    )
+fun Shoe(viewModel: ShoesTapViewModel, navController: NavController) {
 
     LazyRow {
-        items(shoes) { shoe ->
+        items(viewModel.shoes) {
+            shoe ->
             ShoeCard(
                 img = painterResource(id = shoe.imageResID),
-                title = shoe.title,
-                description = shoe.contentDescription,
-                price = shoe.price
-            ) {}
+                title = stringResource(id = shoe.title),
+                description = shoe.contentDescription?.let { stringResource(id = it) },
+                price = shoe.price,
+                onClick = {
+                    navController.navigate("description")
+                    viewModel.selectProduct(shoe)
+                }
+            )
         }
     }
 }
 
 
+
 @Composable
-fun Sneaker(){
-    val sneakers = listOf(
-         ProductItem(R.drawable.sneaker_1, stringResource(id = R.string.title_sneaker_1),
-             null, 1000),
-         ProductItem(R.drawable.sneaker_2, stringResource(id = R.string.title_sneaker_2),
-             null, 2000),
-         ProductItem(R.drawable.sneaker_3, stringResource(id = R.string.title_sneaker_3),
-             null, 3000),
-         ProductItem(R.drawable.sneaker_4, stringResource(id = R.string.title_sneaker_4),
-             null, 4000),
-         ProductItem(R.drawable.sneaker_5, stringResource(id = R.string.title_sneaker_5),
-             null,5000),
-         ProductItem(R.drawable.sneaker_6, stringResource(id = R.string.title_sneaker_6),
-             null, 6000),
-         ProductItem(R.drawable.sneaker_7, stringResource(id = R.string.title_sneaker_7),
-             null, 7000)
-     )
+fun Sneaker(viewModel: ShoesTapViewModel, navController: NavController){
 
     LazyRow {
-        items(sneakers){
+        items(viewModel.sneakers){
             sneaker ->
-
             ShoeCard(
                 img = painterResource(id = sneaker.imageResID),
-                title = sneaker.title,
-                description = sneaker.contentDescription,
-                price = sneaker.price) {}
+                title = stringResource(id = sneaker.title),
+                description = sneaker.contentDescription?.let { stringResource(id = it) },
+                price = sneaker.price ,
+                onClick = {
+                    navController.navigate("description")
+                    viewModel.selectProduct(sneaker)
+                })
             }
         }
 }

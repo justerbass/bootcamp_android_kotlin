@@ -5,6 +5,8 @@
     <string name="title_name_list_1">Zapatos</string>
     <string name="title_name_list_2">Zapatillas</string>
 
+<!--    nombre de los zapatos -->
+
     <string name="title_shoe_1">Zapato mujer elegante</string>
     <string name="title_shoe_2">Zapato cafe</string>
     <string name="title_shoe_3">Zapato cafe elegante</string>
@@ -21,5 +23,22 @@
     <string name="title_sneaker_6">Zapatilla verde deportiva</string>
     <string name="title_sneaker_7">Zapatilla multicolor</string>
 
+<!--    descripcion de los zapatos-->
+
+    <string name="description_shoe_1">Clásico zapato negro con un diseño minimalista, ideal para eventos formales.</string>
+    <string name="description_shoe_2">Un zapato marrón claro de cuero, ideal para combinaciones casuales o formales</string>
+    <string name="description_shoe_3">Zapato marrón oscuro con acabados de calidad, perfecto para un look profesional.</string>
+    <string name="description_shoe_4">Sofisticado zapato marrón con detalles únicos, excelente para ocasiones especiales.</string>
+    <string name="description_shoe_5">Un elegante zapato rojo con diseño clásico, ideal para ocasiones formales.</string>
+    <string name="description_shoe_6">Zapato negro con detalles elegantes, una opción versátil para diferentes ocasiones.</string>
+    <string name="description_shoe_7">Zapato negro con estilo moderno y refinado, perfecto para la oficina o eventos casuales.</string>
+
+    <string name="description_sneaker_1">Estilo azul oscuro con detalles sutiles, combina bien con cualquier atuendo deportivo.</string>
+    <string name="description_sneaker_2">Cómodas zapatillas azules con detalles llamativos, ideal para un look moderno.</string>
+    <string name="description_sneaker_3">Zapatilla azul con un diseño minimalista, perfecta para salidas casuales.</string>
+    <string name="description_sneaker_4">Zapatillas deportivas rojas, perfectas para un look casual con un toque vibrante.</string>
+    <string name="description_sneaker_5">Zapatillas verdes con diseño ergonómico, excelente para actividades deportivas.</string>
+    <string name="description_sneaker_6">Zapatillas verdes con diseño elegante y versátil, ideales para actividades diarias.</string>
+    <string name="description_sneaker_7">Zapatilla con un diseño multicolor dinámico, ideal para quienes buscan originalidad</string>
 
 </resources>
